@@ -37,7 +37,7 @@
             <h4 class="text_black bold-font">Informations</h4>
 
             <ul class="airfcfx-footer-ul footer_menu list-unstyled">
-                <li><a href="<?php echo base_url(CMS)?>policies">Policies</a></li>
+                <li><a href="<?php echo base_url();?>policies">Policies</a></li>
                 <li><a href="<?php echo base_url(AIRBNB); ?>contact">Contact host</a></li>
             </ul>
         </div>
