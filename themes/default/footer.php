@@ -1,66 +1,115 @@
-<div class="footer">
-    <div class="airfcfx-home-cnt-width container margin_bottom30">
-        <div class="res-pading0 airfcfx-footer-info col-xs-12 col-sm-3 col-md-4 margin_bottom20">
-
-            <div class="col-xs-6 col-sm-12 airfcfx-footer-dd-cnt hor-padding">
-                <select id="language_select" class="col-xs-12 col-sm-6 airfcfx-footer-select form-control margin10 no-hor-padding">
-                    <option selected value="en">English</option>
-                    <option value="fr">French</option>
-                    <option value="zh">Chinese</option>
-                </select>
-            </div>
-
-            <div class="col-xs-6 col-sm-12 airfcfx-footer-dd-cnt hor-padding">
-                <select id="currency_select" class="col-xs-12 col-sm-6 airfcfx-footer-select form-control margin10 no-hor-padding" onchange="change_currency()">
-                    <option selected value="1">USD</option>
-                    <option value="2">EUR</option>
-                    <option value="3">GBP</option>
-                    <option value="4">MXN</option>
-                    <option value="5">RUB</option>
-                    <option value="6">AUD</option>
-                    <option value="7">SGD</option>
-                </select>
-            </div>
-
-            <div class="airfcfx-footer-app-section col-xs-12 col-sm-12 hor-padding">
-                <div class="airfcfx-app-section-txt">Native Apps</div>
-                <div class="airfcfx-footer-app-link">
-                    <a href="index.html" target="_blank" class="airfcfx-app-link"><img src="<?php echo $theme_url;?>assets/airbnb/images/ios-app-link.png" width="32px" height="32px" alt="ios link"></a>
-                    <a href="index.html" target="_blank" class="airfcfx-app-link"><img src="<?php echo $theme_url;?>assets/airbnb/images/android-app-link.png" width="32px" height="32px" alt="ios link"></a>
-
+<footer>
+    <!--WIDGET WRAP START-->
+    <div class="widget_wrap them_overlay">
+        <!--CONTAINER START-->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="widget_logo">
+                        <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>uploads/settings/logo.png" alt=""></a>
+                        <p>There are many variations of passages of Lorem Ipsum availableThere are many variations of passages of Lorem Ipsum available...</p>
+                        <ul class="widget_call_info">
+                            <li><a href="#"><i class="fa fa-map-marker"></i>505 North State Street,  Apartment #4, Chicago</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>+92 - 334 - 2797084</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>support@islamicmadrasa.com</a></li>
+                        </ul>
+                        <ul class="widget_social_icon">
+                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-tumblr"></i></a></li>
+                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-vimeo"></i></a></li>
+                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-vimeo"></i></a></li>
+                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-camera-retro"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="widget_event">
+                        <h4 class="widget_title">Latest Events</h4>
+                        <ul class="kode_calender_detail">
+                            <li>
+                                <div class="kode_calender_list">
+                                    <span>23 <i>April</i></span>
+                                    <div class="kode_event_text">
+                                        <h6><a href="#">Awarness Of Islam EventAt Monday</a></h6>
+                                        <p>Sunday <span>09 : 45 a.m</span> to <span>9:30 p.m</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="kode_calender_list">
+                                    <span>23 <i>April</i></span>
+                                    <div class="kode_event_text">
+                                        <h6><a href="#">Awarness Of Islam EventAt Monday</a></h6>
+                                        <p>Sunday <span>09 : 45 a.m</span> to <span>9:30 p.m</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="kode_calender_list">
+                                    <span>23 <i>April</i></span>
+                                    <div class="kode_event_text">
+                                        <h6><a href="#">Awarness Of Islam EventAt Monday</a></h6>
+                                        <p>Sunday <span>09 : 45 a.m</span> to <span>9:30 p.m</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="widget_event">
+                        <h4 class="widget_title">Get In Touch</h4>
+                        <form method="post" class="comment-form">
+                            <div class="kode-left-comment-sec">
+                                <div class="kf_commet_field">
+                                    <input placeholder="Your Name" name="author" type="text" value="" data-default="Name*" size="30" required>
+                                </div>
+                                <div class="kf_commet_field">
+                                    <input placeholder="Your Email" name="email" type="text" value="" data-default="Email*" size="30" required>
+                                </div>
+                            </div>
+                            <div class="kode_textarea">
+                                <textarea placeholder="Your Message" name="comment"></textarea>
+                            </div>
+                            <button name="submit" type="submit" class="medium_btn bg_transparent border btn_hover">Submit Now</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- col-sm-4 end -->
-
-        <div class="airfcfx-footer-info col-xs-12 col-sm-3 col-md-3 hor-padding">
-            <h4 class="text_black bold-font">Informations</h4>
-
-            <ul class="airfcfx-footer-ul footer_menu list-unstyled">
-                <li><a href="<?php echo base_url();?>policies">Policies</a></li>
-                <li><a href="<?php echo base_url(AIRBNB); ?>contact">Contact host</a></li>
-            </ul>
-        </div>
+        <!--CONTAINER END-->
     </div>
-    <!-- container end -->
-
-    <div class="airfcfx-home-cnt-width container margin_bottom20">
-        <div class="airfcfx-footer-border border_bottom1 margin_top20 margin_bottom20"></div>
-        <div class="text-center">
-            <!--<div class="airfcfx-joinus-txt margin_bottom0 bold-font">Join Us On</div>-->
-            <div class="footer-social-icons margin_bottom10"><a class="airfcfx-socialicon-padding" href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook social_icon"></i></a>
-                <a class="airfcfx-socialicon-padding" href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter social_icon"></i></a>
-                <a class="airfcfx-socialicon-padding" href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus social_icon"></i></a>
-                <a class="airfcfx-socialicon-padding" href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin social_icon"></i></a>
-                <a class="airfcfx-socialicon-padding" href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube-play social_icon"></i></a>
-                <a class="airfcfx-socialicon-padding" href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest-p social_icon"></i></a>
-                <a class="airfcfx-socialicon-padding" href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram social_icon"></i></a></div>
-            <div class="foter-copyright">
-                <p class="airfcfx-copyright">Copyright &copy; Tecfare 2019
-                </p>
+    <!--WIDGET WRAP END-->
+    <!--WIDGET COPYRIGHT START-->
+    <div class="widget_copyright">
+        <!--CONTAINER START-->
+        <div class="container">
+            <div class="copyright_text">
+                <p>Copyright© 2017. All Rights <a href="#">Reserved alsalam.com</a></p>
+                <a id="child-topbtn" class="top_btn hvr-wobble-vertical" href="#"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
             </div>
         </div>
+        <!--CONTAINER END-->
     </div>
-    <!-- container end -->
-
+    <!--WIDGET COPYRIGHT END-->
+</footer>
 </div>
+<!--WRAPER END-->
+<!--JavaScript-->
+<script src="<?php echo $theme_url;?>assets/js/jquery.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/bootstrap.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/slick.min.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/wow.min.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/jquery.bxslider.min.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/jQuery-plugin-progressbar.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/chosen.jquery.min.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/modernizr.custom.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/jquery.dlmenu.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/musicplayer.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/jquery.prettyphoto.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/jquery.downCount.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/waypoints-min.js"></script>
+<script src="<?php echo $theme_url;?>assets/js/custom.js"></script>
+</body>
+</html>

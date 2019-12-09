@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // Main routes
-$route['default_controller'] ="airbnb";
+$route['default_controller'] ="home";
 $route['sitemap\.xml'] = "Sitemap";
 $route['404_override'] = 'home/error';
 $route['translate_uri_dashes'] = FALSE;
