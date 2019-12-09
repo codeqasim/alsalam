@@ -19,9 +19,6 @@ $route[ADMINURI.'accounts/update_status'] = "admin/accounts/update_status";
 $route[ADMINURI.'accounts/delete_all_account_type'] = "admin/accounts/delete_all_account_type";
 $route[ADMINURI.'accounts/types([a-zA-Z0-9]*)'] = "admin/accounts/types$1";
 $route[ADMINURI.'accounts/(:any)'] = "admin/accounts/index/$1";
-$route[ADMINURI.'cms/delete_all_cms'] = "admin/cms/delete_all_cms";
-$route[ADMINURI.'cms/delete_all_cms_headings'] = "admin/cms/delete_all_cms_headings";
-$route[ADMINURI.'cms/(:any)'] = "admin/cms/index/$1";
 $route[ADMINURI.'login'] = "admin/auth/login";
 $route[ADMINURI.'blog/(:any)'] = "home/blog_detail/$1";
 

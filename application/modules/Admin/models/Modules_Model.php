@@ -122,15 +122,6 @@ class Modules_Model extends CI_Model
         $this->db->where_in('id',$id);
         $this->db->delete('module_cms');
     }
-    public function delete_all_cms_headings($id)
-    {
-        $this->db->where_in('id',$id);
-        $this->db->delete('module_cms');
-
-        $this->db->where_in('id',$id);
-        $this->db->delete('module_cms_headings');
-
-    }
     public function insert_roles_types($post)
     {
 
@@ -168,11 +159,6 @@ class Modules_Model extends CI_Model
         return $this->db->get('modules')->result();
     }
 
-    public function getCmsTypes()
-    {
-        $this->db->select('module_cms_headings.*');
-        return $this->db->get('module_cms_headings')->result();
-    }
 
 
 }

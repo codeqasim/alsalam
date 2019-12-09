@@ -3681,11 +3681,9 @@
                             </li>
                             <li class="<?=add_active("cms")?>"><a href="javascript:void(0)"><i class="icon mdi mdi-dot-circle"></i><span>CMS</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?php echo base_url(ADMINURI); ?>cms/page_headings">CMS Pages Headings</a></li>
                                     <li><a href="<?php echo base_url(ADMINURI); ?>cms">CMS Pages</a></li>
-                                    <?php foreach ($cms_types as $type){ ?>
-                                    <li><a href="<?php echo base_url(ADMINURI)."cms/".slugify($type->name); ?>"><?=$type->name?></a></li>
-                                    <?php } ?>
+                                    <li class="divider"></li>
+                                    <li><a href="<?php echo base_url(ADMINURI); ?>menus">CMS Menus</a></li>
                                 </ul>
                             </li>
                             <?php if($modules["blogs"]->active) { ?>

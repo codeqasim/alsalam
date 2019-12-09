@@ -167,4 +167,16 @@ class Admin extends MX_Controller {
         echo $foo;
 
     }
+
+    public function menus()
+    {
+        $xcrud = xcrud_get_instance();
+        $xcrud->table('module_cms_menus');
+        $xcrud->unset_title();
+        $data['title'] = 'Subscribes';
+        $data['head'] = 'Subscribes';
+        $data['content'] = $xcrud->render();
+        $data['main_content'] = 'Admin/xcrud_menu.php';
+        $this->load->view('Admin/template', $data);
+    }
 }

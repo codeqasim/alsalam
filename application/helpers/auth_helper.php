@@ -28,7 +28,6 @@ if (!function_exists('getAllObjects')) {
         }
         $data["modules"] = $modules_final;
         $data["accounts_types"] =  $ci->am->getAccountTypes();
-        $data["cms_types"] =  $ci->mm->getCmsTypes();
         $data["drawer_status"] =  $ci->session->userdata('drawer_status');
         return $data;
 
