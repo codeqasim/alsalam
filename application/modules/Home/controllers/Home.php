@@ -10,8 +10,8 @@ class Home extends MX_Controller {
         $this->load->model('Home_Model');
     }
     public function index()
-    { 
-     $this->theme->view('Home/index');
+    {
+     $this->theme->view('index');
     }
 
     public function contact()
