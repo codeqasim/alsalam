@@ -14,6 +14,7 @@ class Admin extends MX_Controller {
         $this->load->model('Setting_Model', 'sm');
         $this->load->model('Modules_Model', 'mm');
         $this->load->model('Auth_Model', 'am');
+        $this->load->model('Admin_model', 'Amodel');
         $data = getAllObjects();
 
         $this->load->vars($data);
@@ -168,15 +169,52 @@ class Admin extends MX_Controller {
 
     }
 
+    // start menu $ sub menu functions
     public function menus()
     {
         $xcrud = xcrud_get_instance();
         $xcrud->table('module_cms_menus');
+        $xcrud->columns('name,slug,header,footer,status'); 
+        $xcrud->fields('name,slug,header,footer,status'); 
         $xcrud->unset_title();
+        $xcrud->column_callback('status', 'change_menu_status');
         $data['title'] = 'Subscribes';
         $data['head'] = 'Subscribes';
         $data['content'] = $xcrud->render();
+        $data ['header_menus'] = $this->Amodel->h_menus();
+        $data ['footer_menus'] = $this->Amodel->f_menus();
         $data['main_content'] = 'Admin/xcrud_menu.php';
         $this->load->view('Admin/template', $data);
     }
+ 
+    public function menu()
+    {
+    $list = $this->input->post('list');
+    $update = $this->Amodel->update_menu($list);
+        $msg['success'] = false;
+        if($update){
+            $msg['success'] = true;
+        }
+        echo json_encode($msg);
+    }
+  
+    public function footermenu()
+    {
+    $list = $this->input->post('list');
+    $update = $this->Amodel->update_footermenu($list);
+        $msg['success'] = false;
+        if($update){
+            $msg['success'] = true;
+        }
+        echo json_encode($msg);
+    }
+
+
+        public function menu_status()
+    {
+        echo $this->Amodel->ChangeStatus($this->input->post());
+    }
+
+    // End menu $ sub menu functions
+
 }

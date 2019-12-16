@@ -88,6 +88,10 @@
 
     });
 
+    $("#change_menu_status").change(function () {
+
+    });
+
     function updateOrder(value, id) {
         $body = $("body");
         $body.addClass("loading");

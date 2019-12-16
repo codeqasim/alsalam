@@ -69,6 +69,42 @@ $('body').delay(350).css({'overflow': 'visible'});
 
  });
 
+  $(".change_menu_status").change(function (e) {
+     var field = $(this);
+     var pk = field.data('pk');
+     if(field.val() == 1)
+     {
+         field.val(0);
+     } else{
+         field.val(1);
+     }
+     var data = {"id":pk,"value":field.val()};
+     console.log(data)
+     $.ajax({
+         type: "POST",
+         url: '<?=base_url('admin/menu_status')?>',
+         data: data,
+         success: function(response)
+         {
+             if(field.val() == "1")
+             {
+                 var status = "activated"
+             }else{
+                 var status = "deactivated"
+
+             }
+             $.gritter.add({
+                 title: 'Menu status',
+                 text: "Menu status has been "+ status,
+                 image: "<?=base_url('assets/img/favicon.png')?>",
+                 class_name: 'clean',
+                 sticky: true,
+                 time: ''
+             });
+         } });
+
+ });
+
     $(".change_modules_status").change(function (e) {
         var field = $(this);
         var pk = field.data('pk');

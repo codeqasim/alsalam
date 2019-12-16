@@ -7,11 +7,11 @@ class Airbnb extends MX_Controller {
     	$this->theme->view('modules/airbnb/home');
     }
 
-    public function list()
-    { 
-    $this->theme->view('modules/airbnb/listing');
+    // public function list()
+    // { 
+    // $this->theme->view('modules/airbnb/listing');
 
-    }
+    // }
 
      public function details()
     { 

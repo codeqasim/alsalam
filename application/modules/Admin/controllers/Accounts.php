@@ -64,9 +64,10 @@ class Accounts extends MX_Controller
         echo $this->sm->activiate_user($this->input->post());
     }
     public function chagne_order()
-    {
+    { 
         $this->am->ChangeOrder($this->input->post('id'),$this->input->post('value'));
     }
+ 
     public function get_cities()
     {
         $city = $this->input->post("keyword");

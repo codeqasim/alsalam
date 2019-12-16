@@ -105,6 +105,13 @@ function change_status($value, $fieldname, $primary_key, $row, $xcrud)
     return '<div class="switch-button switch-button-xs"> <input type="checkbox" '.$checked.' class="change_status" value="'.$value.'" data-pk="'.$primary_key.'"  name="swt1" id="sw'.$primary_key.'"><span> <label  for="sw'.$primary_key.'"></label></span> </div> ' ;
 
 }
+
+function change_menu_status($value, $fieldname, $primary_key, $row, $xcrud)
+{
+    $checked = $value?' checked':'';
+    return '<div class="switch-button switch-button-xs"> <input type="checkbox" '.$checked.' class="change_menu_status" value="'.$value.'" data-pk="'.$primary_key.'"  name="swt1" id="sw'.$primary_key.'"><span> <label  for="sw'.$primary_key.'"></label></span> </div> ' ;
+
+}
 function change_modules_status($value, $fieldname, $primary_key, $row, $xcrud)
 {
     $checked = $value?' checked':'';

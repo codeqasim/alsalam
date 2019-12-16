@@ -16,86 +16,88 @@
         <?php echo $content; ?>
     </div>
     <div class="col-md-6">
-
-
+​
+​
 <div class="panel panel-contrast">
 <div class="panel-heading panel-heading-contrast">Header Menu
 <span class="panel-subtitle">All Header menus goes here.</span>
 </div>
+<!-- <div class="alert alert-success" style="display: none; color: white;"> </div> -->
 <div class="panel-body">
+​
+<div class="dd" id="nestable">
+<?php function fetch_menu($header_menus){ ?>
+   <?php foreach($header_menus as $menu){ ?>
+        <li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div></li> 
+      <?php  if(!empty($menu->sub)){ ?>
+            <ol class="dd-list">
+       <?php fetch_sub_menu($menu->sub); ?>
+            </ol>
+      <?php  } ?>
+   <?php } ?>
+ <?php } ?>
 
-<div id="list2" class="dd">
+ <?php function fetch_sub_menu($sub_menu){ ?>
+   <?php foreach($sub_menu as $menu){ ?>
+<li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div></li>
+     <?php   if(!empty($menu->sub)){ ?>
+            <ol class="dd-list">
+         <?php   fetch_sub_menu($menu->sub); ?>
+            </ol>
+       <?php }       ?>
+<?php    } ?>
+<?php } ?>
+
 <ol class="dd-list">
-<li data-id="13" class="dd-item dd3-item">
-<div class="dd-handle dd3-handle"></div>
-<div class="dd3-content">Item 13</div>
-<ol style="" class="dd-list">
-<li data-id="14" class="dd-item dd3-item">
-<div class="dd-handle dd3-handle"></div>
-<div class="dd3-content">Item 14</div>
-</li>
-<li data-id="15" class="dd-item dd3-item">
-<div class="dd-handle dd3-handle"></div>
-<div class="dd3-content">Item 15</div>
-<ol style="" class="dd-list">
-<li data-id="16" class="dd-item dd3-item">
-<div class="dd-handle dd3-handle"></div>
-<div class="dd3-content">Item 16</div>
-</li>
-<li data-id="17" class="dd-item dd3-item">
-<div class="dd-handle dd3-handle"></div>
-<div class="dd3-content">Item 17</div>
-</li>
+<?php fetch_menu($header_menus); ?>
 </ol>
-</li>
-</ol>
-</li>
-</ol>
-
-<code id="out1"></code>
-
 </div>
-
-
+​
+​
 </div>
 </div>
-
-
+​
+​
 <div class="panel panel-contrast">
 <div class="panel-heading panel-heading-contrast">Footer Menu
 <span class="panel-subtitle">All Footer menus goes here.</span>
 </div>
+<!-- <div class="alert alert-success" style="display: none; color: white;"> </div> -->
 <div class="panel-body">
+​
+<div class="dd" id="nestable2">
+<?php function fetch_menuu($footer_menus){ ?>
+   <?php foreach($footer_menus as $menu){ ?>
+        <li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div></li> 
+      <?php  if(!empty($menu->sub)){ ?>
+            <ol class="dd-list">
+       <?php fetch_sub_menuu($menu->sub); ?>
+            </ol>
+      <?php  } ?>
+   <?php } ?>
+ <?php } ?>
 
-<div id="list1" class="dd">
+ <?php function fetch_sub_menuu($sub_menu){ ?>
+   <?php foreach($sub_menu as $menu){ ?>
+<li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div></li>
+     <?php   if(!empty($menu->sub)){ ?>
+            <ol class="dd-list">
+         <?php   fetch_sub_menuu($menu->sub); ?>
+            </ol>
+       <?php } ?>
+<?php    } ?>
+<?php } ?>
+
 <ol class="dd-list">
-    <li data-id="1" class="dd-item">
-        <div class="dd-handle">Item 1</div>
-    </li>
-    <li data-id="2" class="dd-item">
-        <div class="dd-handle">Item 2</div>
-    </li>
-    <li data-id="3" class="dd-item">
-        <div class="dd-handle">Item 3</div>
-        <ol class="dd-list">
-            <li data-id="4" class="dd-item">
-                <div class="dd-handle">Item 4</div>
-            </li>
-            <li data-id="5" class="dd-item">
-                <div class="dd-handle">Item 5</div>
-            </li>
-        </ol>
-    </li>
+<?php fetch_menuu($footer_menus); ?>
 </ol>
 </div>
-<pre><code id="out2"></code></pre>
-
-
+​
 </div>
 </div>
-
-
-
+​
+​
+​
     </div>
     </div>
     </div>
@@ -112,21 +114,81 @@
         width: 100%;
         background: rgba(255, 255, 255, .8) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;
     }
-
+​
     /* When the body has the loading class, we turn
        the scrollbar off with overflow:hidden */
     body.loading .modal {
         overflow: hidden;
     }
-
+​
     /* Anytime the body has the loading class, our
        modal element will be visible */
     body.loading .modal {
         display: block;
     }
 </style>
-<script>
 
+
+<!-- menu script -->
+<script>
+$(document).ready(function()
+{
+      var updateOutput = function (e) {
+        var list = e.length ? e : $(e.target),
+         output = list.data('output');
+        $.ajax({
+            type: "POST",
+            url: '<?php echo base_url() ?>admin/menu',
+            data: {
+                list: list.nestable('serialize')
+            },
+           success: function(result){
+            $('.alert-success').html('Menu update successfully')
+            .fadeIn().delay(400).fadeOut('slow');
+              },
+                error: function(result){
+                    alert("Menu could not update");
+                },
+      });
+    }
+    $('#nestable').nestable({
+        group: 1,
+        maxDepth: 7,
+    }).on('change', updateOutput);
+
+    updateOutput($('#nestable').data('output', $('#nestable-output')));
+
+    var updateOutput2 = function (e) {
+        var list = e.length ? e : $(e.target),
+         output = list.data('output');
+        $.ajax({
+            type: "POST",
+            url: '<?php echo base_url() ?>admin/footermenu',
+            data: {
+                list: list.nestable('serialize')
+            },
+           success: function(result){
+            $('.alert-success').html('Menu update successfully')
+            .fadeIn().delay(400).fadeOut('slow');
+              },
+                error: function(result){
+                    alert("Menu could not update");
+                },
+      });
+    }
+    $('#nestable2').nestable({
+        group: 1,
+        maxDepth: 7,
+    }).on('change', updateOutput);
+
+    updateOutput2($('#nestable2').data('output', $('#nestable-output2')));
+});
+</script>
+<!-- End menu script -->
+
+
+<script>
+​
     $("#select_all").click(function () {
         if ($(this).prop("checked")) {
             $("[class=checkboxcls]").prop("checked", true);
@@ -146,7 +208,7 @@
                 $.post("<?=$base_url?>", {primery_keys: all_data}, function (theResponse) {
                     location.reload();
                 });
-
+​
             } else {
                 location.reload();
                 return false;
@@ -155,25 +217,29 @@
             alert("Please at least select one item.")
         }
     });
-
+​
     function delfunc(id, baseurl) {
-
+​
         var answer = confirm("Are you sure you want to delete?");
         if (answer) {
             $.post(baseurl, {id: id}, function (theResponse) {
                 location.reload();
             });
-
+​
         } else {
             location.reload();
             return false;
         }
     }
-
+​
     $("#change_status").change(function () {
-
+​
     });
 
+    $("#change_menu_status").change(function () {
+​
+    });
+​
     function updateOrder(value, id) {
         $body = $("body");
         $body.addClass("loading");
@@ -194,10 +260,10 @@
                         time: ''
                     });
                 });
-
+​
         });
     }
-
+​
     function updateOrderCms(value, id) {
         $body = $("body");
         $body.addClass("loading");
@@ -218,9 +284,9 @@
                         time: ''
                     });
                 });
-
+​
         });
     }
 
-
+​
 </script>

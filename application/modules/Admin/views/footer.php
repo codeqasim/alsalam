@@ -208,6 +208,7 @@
 <script src="<?php echo base_url(ASSETS); ?>lib/jquery.nestable/jquery.nestable.js" type="text/javascript"></script>
 <script src="<?php echo base_url(ASSETS); ?>js/app-ui-nestable-lists.js" type="text/javascript"></script>
 
+
 <?php include 'scripts.php'; ?>
 
 </body>

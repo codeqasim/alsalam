@@ -33,6 +33,7 @@ class Auth_Model extends CI_Model
         $this->db->where('id',$id);
         $this->db->update('accounts',["order_by"=>$value]);
     }
+
     public function delete_account_all_type($ids)
     {
         $this->db->where_in('account_type_id',$ids);
