@@ -11,7 +11,9 @@ class Home extends MX_Controller {
     }
     public function index()
     {
-     $this->theme->view('index');
+    $data ['header_menus'] = $this->Home_Model->h_menus();
+    $data ['footer_menus'] = $this->Home_Model->f_menus();
+    $this->theme->view('index',$data);
     }
 
     public function contact()

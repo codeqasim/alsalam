@@ -92,6 +92,9 @@
 
     });
 
+
+    
+
     function updateOrder(value, id) {
         $body = $("body");
         $body.addClass("loading");

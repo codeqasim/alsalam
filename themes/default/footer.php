@@ -21,6 +21,39 @@
                             <li><a class="hvr-ripple-out" href="#"><i class="fa fa-vimeo"></i></a></li>
                             <li><a class="hvr-ripple-out" href="#"><i class="fa fa-camera-retro"></i></a></li>
                         </ul>
+ 
+
+<!-- Alert!! when you design footer menu then uncomment this footer menu code & pest in your footer menu code (thank you)-->
+
+                        <!--start footer menu -->
+
+<!-- <ul class="widget_social_icon"> -->
+<!-- <?php function footer_menu($footer_menus){ ?>
+   <?php foreach($footer_menus as $menu){ ?>
+       <li><a href="<?php echo base_url(); echo $menu->slug;  ?>"><?php echo $menu->name; ?></a> 
+      <?php  if(!empty($menu->sub)){ ?>
+            <ul>
+       <?php footer_sub_menu($menu->sub); ?>
+            </ul>
+      <?php  } ?>
+   <?php } ?>
+ <?php } ?> -->
+
+ <!-- <?php function footer_sub_menu($sub_menu){ ?>
+   <?php foreach($sub_menu as $menu){ ?>
+<li><a href="<?php echo base_url(); echo $menu->slug; ?>"><?php echo $menu->name; ?></a></li>
+     <?php   if(!empty($menu->sub)){ ?>
+         <?php   footer_sub_menu($menu->sub); ?> -->
+            <!-- </ul> -->
+            <!-- </li>
+       <?php }       ?>
+<?php    } ?>
+<?php } ?>
+<?php footer_menu($footer_menus); ?>
+
+                        </ul> -->
+
+                        <!-- end footer menu -->
                     </div>
                 </div>
                 <div class="col-md-4">

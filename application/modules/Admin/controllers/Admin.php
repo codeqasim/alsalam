@@ -171,13 +171,17 @@ class Admin extends MX_Controller {
 
     // start menu $ sub menu functions
     public function menus()
-    {
+    { 
         $xcrud = xcrud_get_instance();
         $xcrud->table('module_cms_menus');
         $xcrud->columns('name,slug,header,footer,status'); 
-        $xcrud->fields('name,slug,header,footer,status'); 
+        $xcrud->fields('name,slug,header,footer,status');
+        $xcrud->order_by('ordering','asc'); 
         $xcrud->unset_title();
         $xcrud->column_callback('status', 'change_menu_status');
+        $xcrud->after_insert('update_page'); 
+        $xcrud->after_update('update_page'); 
+        $xcrud->after_remove('update_page'); 
         $data['title'] = 'Subscribes';
         $data['head'] = 'Subscribes';
         $data['content'] = $xcrud->render();

@@ -262,7 +262,34 @@
                                     <li><a href="index-1.html">Home page 02</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about-us.html">About Us</a></li>
+
+    <!-- menu code start -->
+<?php function fetch_menuu($header_menus){ ?>
+   <?php foreach($header_menus as $menu){ ?>
+       <li><a href="<?php echo base_url(); echo $menu->slug;  ?>"><?php echo $menu->name; ?></a> 
+      <?php  if(!empty($menu->sub)){ ?>
+            <ul class="kode">
+       <?php fetch_sub_menuu($menu->sub); ?>
+            </ul>
+      <?php  } ?>
+   <?php } ?>
+ <?php } ?>
+
+ <?php function fetch_sub_menuu($sub_menu){ ?>
+   <?php foreach($sub_menu as $menu){ ?>
+<li><a href="<?php echo base_url(); echo $menu->slug; ?>"><?php echo $menu->name; ?></a></li>
+     <?php   if(!empty($menu->sub)){ ?>
+         <?php   fetch_sub_menuu($menu->sub); ?>
+            <!-- </ul> -->
+            </li>
+       <?php }       ?>
+<?php    } ?>
+<?php } ?>
+<?php fetch_menuu($header_menus); ?>
+<!-- menu code end -->
+
+
+                            <!-- <li><a href="about-us.html">About Us</a></li>
                             <li>
                                 <a href="#">Services</a>
                                 <ul class="kode">
@@ -312,7 +339,7 @@
                                     <li><a href="team-detail.html">team detail</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact-us.html">Contact</a></li>
+                            <li><a href="contact-us.html">Contact</a></li> -->
                         </ul>
                         <!--DL Menu Start-->
                         <div id="kode-responsive-navigation" class="dl-menuwrapper">
