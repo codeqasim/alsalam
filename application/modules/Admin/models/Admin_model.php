@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_model extends CI_Model{
-
+ 
  
 //start header menu & sub menu functions
 		public function h_menus()
@@ -12,9 +12,7 @@ class Admin_model extends CI_Model{
         $this->db->order_by("ordering", "asc");
 		$this->db->where('header = 1');
         $this->db->where('parent_id', 0);
-
         $parent = $this->db->get();
-        
         $categories = $parent->result();
         $i=0;
         foreach($categories as $p_cat){
@@ -56,7 +54,7 @@ class Admin_model extends CI_Model{
         if ($parent_id != $item['id']) {
 
             $where = array('id' => $item['id']);
-            // var_dump($data . ':' . $where);
+            var_dump($data . ':' . $where);
             $this->db->where($where);
             $this->db->update('module_cms_menus', $data);
         }
@@ -64,6 +62,9 @@ class Admin_model extends CI_Model{
             $this->update_menu($item["children"], $item["id"], $ordering);
         }
     }
+
+
+    
 }
     //End header menu & sub menu functions
 

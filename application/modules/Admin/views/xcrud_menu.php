@@ -22,34 +22,36 @@
 <div class="panel-heading panel-heading-contrast">Header Menu
 <span class="panel-subtitle">All Header menus goes here.</span>
 </div>
-<!-- <div class="alert alert-success" style="display: none; color: white;"> </div> -->
+ <div class="alert alert-success" style="display: none; color: white;"> </div> 
 <div class="panel-body">
 ​
 <div class="dd" id="nestable">
+    <ol class="dd-list">
 <?php function fetch_menu($header_menus){ ?>
    <?php foreach($header_menus as $menu){ ?>
-        <li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div></li> 
+        <li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div> 
       <?php  if(!empty($menu->sub)){ ?>
             <ol class="dd-list">
        <?php fetch_sub_menu($menu->sub); ?>
-            </ol>
+            </ol></li>
       <?php  } ?>
    <?php } ?>
  <?php } ?>
 
  <?php function fetch_sub_menu($sub_menu){ ?>
    <?php foreach($sub_menu as $menu){ ?>
-<li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div></li>
+<li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div>
      <?php   if(!empty($menu->sub)){ ?>
             <ol class="dd-list">
          <?php   fetch_sub_menu($menu->sub); ?>
-            </ol>
+            </ol></li>
        <?php }       ?>
 <?php    } ?>
 <?php } ?>
 
-<ol class="dd-list">
+<!-- <ol class="dd-list"> -->
 <?php fetch_menu($header_menus); ?>
+<!-- </ol> -->
 </ol>
 </div>
 ​
@@ -66,29 +68,30 @@
 <div class="panel-body">
 ​
 <div class="dd" id="nestable2">
+    <ol class="dd-list">
 <?php function fetch_menuu($footer_menus){ ?>
    <?php foreach($footer_menus as $menu){ ?>
-        <li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div></li> 
+        <li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div> 
       <?php  if(!empty($menu->sub)){ ?>
             <ol class="dd-list">
        <?php fetch_sub_menuu($menu->sub); ?>
-            </ol>
+            </ol></li>
       <?php  } ?>
    <?php } ?>
  <?php } ?>
 
  <?php function fetch_sub_menuu($sub_menu){ ?>
    <?php foreach($sub_menu as $menu){ ?>
-<li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div></li>
+<li class="dd-item" data-id="<?php echo $menu->id; ?>"><div class="dd-handle"><?php echo $menu->name; ?></div>
      <?php   if(!empty($menu->sub)){ ?>
             <ol class="dd-list">
          <?php   fetch_sub_menuu($menu->sub); ?>
-            </ol>
+            </ol></li>
        <?php } ?>
 <?php    } ?>
 <?php } ?>
 
-<ol class="dd-list">
+
 <?php fetch_menuu($footer_menus); ?>
 </ol>
 </div>
@@ -143,8 +146,9 @@ $(document).ready(function()
                 list: list.nestable('serialize')
             },
            success: function(result){
-            $('.alert-success').html('Menu update successfully')
-            .fadeIn().delay(400).fadeOut('slow');
+            location.reload(true);
+            // $('.alert-success').html('Menu update successfully')
+            // .fadeIn().delay(400).fadeOut('slow');
               },
                 error: function(result){
                     alert("Menu could not update");
@@ -156,9 +160,8 @@ $(document).ready(function()
         maxDepth: 7,
     }).on('change', updateOutput);
 
-    updateOutput($('#nestable').data('output', $('#nestable-output')));
 
-    var updateOutput2 = function (e) {
+    var updateOutput = function (e) {
         var list = e.length ? e : $(e.target),
          output = list.data('output');
         $.ajax({
@@ -168,8 +171,9 @@ $(document).ready(function()
                 list: list.nestable('serialize')
             },
            success: function(result){
-            $('.alert-success').html('Menu update successfully')
-            .fadeIn().delay(400).fadeOut('slow');
+            location.reload(true);
+            // $('.alert-success').html('Menu update successfully')
+            // .fadeIn().delay(400).fadeOut('slow');
               },
                 error: function(result){
                     alert("Menu could not update");
@@ -180,8 +184,6 @@ $(document).ready(function()
         group: 1,
         maxDepth: 7,
     }).on('change', updateOutput);
-
-    updateOutput2($('#nestable2').data('output', $('#nestable-output2')));
 });
 </script>
 <!-- End menu script -->

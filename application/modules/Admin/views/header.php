@@ -3665,8 +3665,12 @@
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings">Settings</a></li>
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/modules">Modules</a></li>
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/currencies">Curencies</a></li>
-                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/payment_gateways">Payment Gateways</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?> /payment_gateways">Payment Gateways</a></li>
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/social">Social Icons</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/sliders">Sliders</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/service">Service</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/team">Team</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/events">Events</a></li>
                                 </ul>
                             </li>
                             <li class="<?=add_active("accounts")?>"><a href="javascript:void(0)"><i class="icon mdi mdi-face"></i><span>Accounts</span></a>

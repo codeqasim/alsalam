@@ -13,13 +13,15 @@
                             <li><a href="#"><i class="fa fa-phone"></i>+92 - 334 - 2797084</a></li>
                             <li><a href="#"><i class="fa fa-envelope"></i>support@islamicmadrasa.com</a></li>
                         </ul>
+                        
                         <ul class="widget_social_icon">
-                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-tumblr"></i></a></li>
-                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-vimeo"></i></a></li>
-                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-vimeo"></i></a></li>
-                            <li><a class="hvr-ripple-out" href="#"><i class="fa fa-camera-retro"></i></a></li>
+                        <?php
+                        $ctr=0;
+                        foreach ($social_icons as $key) {
+                        $ctr++;
+                        ?>
+                        <li><a class="hvr-ripple-out" href="<?php echo $key->url ?>"><i class="<?php echo $key->class ?>"></i></a></li> 
+                        <?php } ?>
                         </ul>
  
 
@@ -129,6 +131,11 @@
 </footer>
 </div>
 <!--WRAPER END-->
+
+
+
+
+
 <!--JavaScript-->
 <script src="<?php echo $theme_url;?>assets/js/jquery.js"></script>
 <script src="<?php echo $theme_url;?>assets/js/bootstrap.js"></script>
@@ -144,5 +151,10 @@
 <script src="<?php echo $theme_url;?>assets/js/jquery.downCount.js"></script>
 <script src="<?php echo $theme_url;?>assets/js/waypoints-min.js"></script>
 <script src="<?php echo $theme_url;?>assets/js/custom.js"></script>
+
+
+
+
+
 </body>
 </html>

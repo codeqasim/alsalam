@@ -1,53 +1,38 @@
-<!--KODE BANNER WRAP START-->
+<!-- KODE BANNER WRAP START--> 
 <div class="kode_banner_wrap">
     <ul class="bxslider">
+ 
+        <?php
+        $ctr=0;
+        foreach ($sliders as $key) {
+        $ctr++;
+        ?>
+
         <li>
             <figure class="them_overlay">
-                <img src="<?php echo base_url(); ?>uploads/slider/b1.jpg" alt="">
+                <img src="<?php echo base_url('uploads/slider/'. $key->image);?>" alt="">
                 <div class="kode_banner_text">
-                    <div class="large_text">O Mankind</div>
-                    <div class="mediume_text wow">Remeber the favor of <span>ALLAH</span> upon you</div>
-                    <div class="small_text wow">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words...</div>
+                    <div class="large_text"><?php echo $key->title?></div>
+                    <div class="mediume_text wow"><?php echo $key->sub_title?></div>
+                    <div class="small_text wow"><?php echo $key->description?></div>
                     <div class="koed_banner_btn wow">
-                        <a class="medium_btn border margin-right-1 btn_hover" href="#">Read More</a>
+                        <a class="medium_btn border margin-right-1 btn_hover" href="<?php echo base_url();  echo $key->url?>">Read More</a>
                         <a class="medium_btn border btn_hover" href="#">Contact Us</a>
                     </div>
                 </div>
             </figure>
         </li>
-        <li>
-            <figure class="them_overlay">
-                <img src="<?php echo base_url(); ?>uploads/slider/b2.jpg" alt="">
-                <div class="kode_banner_text">
-                    <div class="large_text">O Mankind</div>
-                    <div class="mediume_text">Remeber the favor of <span>ALLAH</span> upon you</div>
-                    <div class="small_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words...</div>
-                    <div class="koed_banner_btn">
-                        <a class="medium_btn border margin-right-1 btn_hover" href="#">Read More</a>
-                        <a class="medium_btn border btn_hover" href="#">Contact Us</a>
-                    </div>
-                </div>
-            </figure>
-        </li>
-        <li>
-            <figure class="them_overlay">
-                <img src="<?php echo base_url(); ?>uploads/slider/b3.jpg" alt="">
-                <div class="kode_banner_text">
-                    <div class="large_text">O Mankind</div>
-                    <div class="mediume_text">Remeber the favor of <span>ALLAH</span> upon you</div>
-                    <div class="small_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words...</div>
-                    <div class="koed_banner_btn">
-                        <a class="medium_btn border margin-right-1 btn_hover" href="#">Read More</a>
-                        <a class="medium_btn border btn_hover" href="#">Contact Us</a>
-                    </div>
-                </div>
-            </figure>
-        </li>
+        <?php } ?>
+       
     </ul>
     <div id="bx-pager" class="pager_link">
-        <a data-slide-index="0" href=""><img src="<?php echo base_url(); ?>uploads/slider/b1.jpg" alt="" /></a>
-        <a data-slide-index="1" href=""><img src="<?php echo base_url(); ?>uploads/slider/b2.jpg" alt="" /></a>
-        <a data-slide-index="2" href=""><img src="<?php echo base_url(); ?>uploads/slider/b3.jpg" alt="" /></a>
+        <?php
+        $ctr=0;
+        foreach ($sliders as $key) {
+        $ctr++;
+        ?>
+    <a data-slide-index="<?php echo $key->id-1?>" href=""><img src="<?php echo base_url('uploads/slider/'. $key->image);?>" alt="" /></a>
+    <?php } ?>
     </div>
 </div>
 <!--KODE BANNER WRAP END-->
@@ -233,84 +218,27 @@
         </div>
         <!--SECTION HDG END-->
         <div class="row">
+             <?php
+        $ctr=0;
+        foreach ($service as $key) {
+        $ctr++;
+        ?>
             <div class="col-md-4 col-sm-6">
                 <div class="kode_service_des">
                     <figure>
-                        <img src="<?php $themeurl; ?>assets/extra-images/service.jpg" alt="">
+                        <img src="<?php echo base_url('uploads/service/'. $key->image);?>" alt="">
                     </figure>
                     <div class="kode_service_text">
-                        <span><i class="fa icon-book"></i></span>
-                        <h4><a href="#">Quran Class</a ></h4>
-                        <p><i class="fa fa-clock-o"></i>Timing : 09:00 A.M  -  03:00 P.M</p>
+                        <span><i class="<?php echo $key->icon ?>"></i></span>
+                        <h4><a href="#"><?php echo $key->title ?></a ></h4>
+                        <p><i class="fa fa-clock-o"></i>Timing : <?php echo $key->time ?></p>
                         <a class="right_arrow hvr-ripple-out" href="#"><i class="fa fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="kode_service_des">
-                    <figure>
-                        <img src="<?php $themeurl; ?>assets/extra-images/service1.jpg" alt="">
-                    </figure>
-                    <div class="kode_service_text">
-                        <span><i class="fa icon-social"></i></span>
-                        <h4><a href="#">Counselling</a ></h4>
-                        <p><i class="fa fa-clock-o"></i>Timing : 04:00 A.M  -  06:00 P.M</p>
-                        <a class="right_arrow hvr-ripple-out" href="#"><i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="kode_service_des">
-                    <figure>
-                        <img src="<?php $themeurl; ?>assets/extra-images/service2.jpg" alt="">
-                    </figure>
-                    <div class="kode_service_text">
-                        <span><i class="fa icon-people"></i></span>
-                        <h4><a href="#">Nikah Services</a></h4>
-                        <p><i class="fa fa-clock-o"></i>Timing : 03:00 A.M  -  01:00 P.M</p>
-                        <a class="right_arrow hvr-ripple-out" href="#"><i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="kode_service_des">
-                    <figure>
-                        <img src="<?php $themeurl; ?>assets/extra-images/service3.jpg" alt="">
-                    </figure>
-                    <div class="kode_service_text">
-                        <span><i class="fa icon-islam"></i></span>
-                        <h4><a href="#">Hadith School</a ></h4>
-                        <p><i class="fa fa-clock-o"></i>Timing : 07:00 A.M  -  04:00 P.M</p>
-                        <a class="right_arrow hvr-ripple-out" href="#"><i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="kode_service_des">
-                    <figure>
-                        <img src="<?php $themeurl; ?>assets/extra-images/service4.jpg" alt="">
-                    </figure>
-                    <div class="kode_service_text">
-                        <span><i class="fa icon-monuments-1"></i></span>
-                        <h4><a href="#">Funeral Services</a ></h4>
-                        <p><i class="fa fa-clock-o"></i>Timing : 09:00 A.M  -  01:00 P.M</p>
-                        <a class="right_arrow hvr-ripple-out" href="#"><i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="kode_service_des">
-                    <figure>
-                        <img src="<?php $themeurl; ?>assets/extra-images/service5.jpg" alt="">
-                    </figure>
-                    <div class="kode_service_text">
-                        <span><i class="fa icon-monuments"></i></span>
-                        <h4><a href="#">Our CAcademies</a ></h4>
-                        <p><i class="fa fa-clock-o"></i>Timing : 08:00 A.M  -  03:00 P.M</p>
-                        <a class="right_arrow hvr-ripple-out" href="#"><i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
+        <?php } ?>
+
+          
             <div class="col-md-12">
                 <div class="service_btn">
                     <a class="medium_btn background-bg-dark btn_hover" href="#">View All Services</a>
@@ -444,70 +372,31 @@
         </div>
         <!--SECTION HDG END-->
         <div class="kode-team-slide">
+       <?php
+        $ctr=0;
+        foreach ($team as $key) {
+        $ctr++;
+        ?>
+
             <div>
                 <div class="kode_tem_fig">
                     <figure>
-                        <img src="<?php $themeurl; ?>assets/extra-images/team.jpg" alt="">
+                        <img src="<?php echo base_url('uploads/team/'. $key->image);?>" alt="">
                         <figcaption>
-                            <h4>Sheikh Hassan</h4>
-                            <p>CEO</p>
+                            <h4><?php echo $key->name ?></h4>
+                            <p><?php echo $key->designation ?></p>
                             <ul class="kode_social_icon">
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a class="hvr-ripple-out" href="<?php echo $key->fb_url ?>"><i class="<?php echo $key->fb_icon ?>"></i></a></li>
+                                <li><a class="hvr-ripple-out" href="<?php echo $key->tw_url ?>"><i class="<?php echo $key->tw_icon ?>"></i></a></li>
+                                <!-- <li><a class="hvr-ripple-out" href="#"><i class="fa fa-tumblr"></i></a></li> -->
                             </ul>
                         </figcaption>
                     </figure>
                 </div>
             </div>
-            <div>
-                <div class="kode_tem_fig">
-                    <figure>
-                        <img src="<?php $themeurl; ?>assets/extra-images/team1.jpg" alt="">
-                        <figcaption>
-                            <h4>Qasim Hussain</h4>
-                            <p>CTO</p>
-                            <ul class="kode_social_icon">
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-tumblr"></i></a></li>
-                            </ul>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-            <div>
-                <div class="kode_tem_fig">
-                    <figure>
-                        <img src="<?php $themeurl; ?>assets/extra-images/team2.jpg" alt="">
-                        <figcaption>
-                            <h4>Younis MD</h4>
-                            <p>PHP Developer</p>
-                            <ul class="kode_social_icon">
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-tumblr"></i></a></li>
-                            </ul>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-            <div>
-                <div class="kode_tem_fig">
-                    <figure>
-                        <img src="<?php $themeurl; ?>assets/extra-images/team3.jpg" alt="">
-                        <figcaption>
-                            <h4>Shahid</h4>
-                            <p>PHP Developer</p>
-                            <ul class="kode_social_icon">
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="hvr-ripple-out" href="#"><i class="fa fa-tumblr"></i></a></li>
-                            </ul>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
+        
+        <?php } ?>
+           
         </div>
     </div>
     <!--CONTAINER END-->
@@ -669,18 +558,25 @@
                     <!--SECTION HDG END-->
                     <div class="kode_blog_list">
                         <ul>
+
+  <?php
+        $ctr=0;
+        foreach ($blogs as $key) {
+        $ctr++;
+        ?>
+
                             <li>
                                 <div class="kode_blog_fig">
                                     <figure class="them_overlay">
-                                        <img src="<?php $themeurl; ?>assets/extra-images/blog.jpg" alt="">
+                                        <img style="height: 200px; width: 200px;" src="<?php echo base_url('uploads/blogs/'. $key->image);?>">
                                         <a class="plus_icon hvr-ripple-out" data-rel="prettyPhoto" href="<?php $themeurl; ?>assets/extra-images/blog.jpg"><i class="fa fa-plus"></i></a>
                                     </figure>
                                     <div class="kode_blog_text">
                                         <ul class="kode_meta">
-                                            <li><a href="#"><i class="fa fa-calendar"></i>05 April , 2017</a></li>
+                                            <li><a href="#"><i class="fa fa-calendar"></i><?php echo $key->created_at ?></a></li>
                                             <li><a href="#"><i class="fa fa-user"></i>By Admin</a></li>
                                         </ul>
-                                        <h5>Protest Against New Hijab law is Announced </h5>
+                                        <h5><a href="<?php echo $key->slug ?>"><?php echo $key->title ?></a></h5>
                                         <ul class="kode_meta meta_2">
                                             <li><a href="#"><i class="fa fa-comments"></i>23 Comments</a></li>
                                             <li><a href="#"><i class="fa fa-heart"></i>654 Likes</a></li>
@@ -688,44 +584,10 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="kode_blog_fig">
-                                    <figure class="them_overlay">
-                                        <img src="<?php $themeurl; ?>assets/extra-images/blog1.jpg" alt="">
-                                        <a class="plus_icon hvr-ripple-out" data-rel="prettyPhoto" href="<?php $themeurl; ?>assets/extra-images/blog1.jpg"><i class="fa fa-plus"></i></a>
-                                    </figure>
-                                    <div class="kode_blog_text">
-                                        <ul class="kode_meta">
-                                            <li><a href="#"><i class="fa fa-calendar"></i>05 April , 2017</a></li>
-                                            <li><a href="#"><i class="fa fa-user"></i>By Admin</a></li>
-                                        </ul>
-                                        <h5>Protest Against New Hijab law is Announced </h5>
-                                        <ul class="kode_meta meta_2">
-                                            <li><a href="#"><i class="fa fa-comments"></i>23 Comments</a></li>
-                                            <li><a href="#"><i class="fa fa-heart"></i>654 Likes</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="kode_blog_fig">
-                                    <figure class="them_overlay">
-                                        <img src="<?php $themeurl; ?>assets/extra-images/blog2.jpg" alt="">
-                                        <a class="plus_icon hvr-ripple-out" data-rel="prettyPhoto" href="<?php $themeurl; ?>assets/extra-images/blog2.jpg"><i class="fa fa-plus"></i></a>
-                                    </figure>
-                                    <div class="kode_blog_text">
-                                        <ul class="kode_meta">
-                                            <li><a href="#"><i class="fa fa-calendar"></i>05 April , 2017</a></li>
-                                            <li><a href="#"><i class="fa fa-user"></i>By Admin</a></li>
-                                        </ul>
-                                        <h5>Protest Against New Hijab law is Announced </h5>
-                                        <ul class="kode_meta meta_2">
-                                            <li><a href="#"><i class="fa fa-comments"></i>23 Comments</a></li>
-                                            <li><a href="#"><i class="fa fa-heart"></i>654 Likes</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
+
+
+
+        <?php } ?>                   
                         </ul>
                     </div>
                 </div>
@@ -768,33 +630,23 @@
                             </figure>
                         </div>
                         <ul class="kode_calender_detail">
-                            <li>
+        <?php
+        $ctr=0;
+        foreach ($events as $key) {
+        $ctr++;
+        ?>
+                           <li>
                                 <div class="kode_calender_list">
-                                    <span>23 <i>April</i></span>
+                                    <span><?php echo $key->date ?> <i><?php echo $key->month ?></i></span>
                                     <div class="kode_event_text">
-                                        <h6><a href="#">Awarness Of Islam EventAt Monday</a></h6>
-                                        <p>Sunday <span>09 : 45 a.m</span> to <span>9:30 p.m</span></p>
+                                        <h6><a href="#"><?php echo $key->name ?></a></h6>
+                                        <p><?php echo $key->days ?> <span><?php echo $key->start_time ?></span> to <span><?php echo $key->end_time ?></span></p>
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="kode_calender_list">
-                                    <span>23 <i>April</i></span>
-                                    <div class="kode_event_text">
-                                        <h6><a href="#">Awarness Of Islam EventAt Monday</a></h6>
-                                        <p>Sunday <span>09 : 45 a.m</span> to <span>9:30 p.m</span></p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="kode_calender_list">
-                                    <span>23 <i>April</i></span>
-                                    <div class="kode_event_text">
-                                        <h6><a href="#">Awarness Of Islam EventAt Monday</a></h6>
-                                        <p>Sunday <span>09 : 45 a.m</span> to <span>9:30 p.m</span></p>
-                                    </div>
-                                </div>
-                            </li>
+        <?php } ?>
+                            
+                         
                         </ul>
                     </div>
                     <!--KODE EVENT DES END-->
@@ -947,16 +799,63 @@
             </div>
             <div class="col-md-6">
                 <div class="kode_newsletter_form">
-                    <form>
+                <form id="myForm" action="" method="post">
                         <div class="kf_commet_field">
-                            <input placeholder="Enter Your Email" name="url" type="text" value="" data-default="Website" size="30" required>
-                            <button class="medium_btn background-bg-dark">Submit</button>
+                            <input placeholder="Enter Your Email" name="email" id="email" type="email" id="email" required>
+                            <button type="submit" id="btnSave" class="medium_btn background-bg-dark">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
+
+<div class="col-md-6">
+  </div>
+<div style="display: none;" class="alert alert-success col-md-6">
+  </div>
+
+</div>
     <!--CONTAINER END-->
 </div>
-<!--KODE NEWSLETTER WRAP END-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+    $(function(){
+        $('#btnSave').click(function(){
+        var email = $('#email').val();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+
+         if(email == '')
+    {
+      alert('Please fill out field');
+      $('#email').focus();
+    } 
+
+       else if(!emailReg.test(email)) {
+            // $("#email").after('<span class="error">Enter a valid email address.</span>');
+            hasError = true;
+        }
+
+    else{
+        $.ajax({
+            type : 'POST',
+            url  : "<?php echo base_url(); ?>Home/subscribe",
+             data : {
+                'email':email,
+                    },
+                success: function(response){
+                $('.alert-success').html('Thank you for subscribe').fadeIn().delay(400).fadeOut('slow');
+                $('#email').val("");
+                       
+                    },
+                    error: function(){
+                        alert('Could not subscribe');
+                    }
+            });
+            return false;
+        }
+    });
+});
+
+</script>

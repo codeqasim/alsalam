@@ -16,7 +16,7 @@ class Settings extends MX_Controller
         $this->load->model('Auth_Model', 'am');
         $data = getAllObjects();
         $this->load->vars($data);
-    }
+    } 
 
     public function index()
     {
@@ -161,11 +161,99 @@ class Settings extends MX_Controller
         $data['title'] = 'Social Icons';
         $data['head'] = 'Social Icons';
         $data['content'] = $xcrud->render();
-        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
-        $data['main_content'] = 'Admin/xcrud';
+         $data['main_content'] = 'Admin/xcrud';
         $data['crumbdata'] = array('Settings','Social');
         $data['crumb'] = 'Admin/crumb';
         $this->load->view('Admin/template', $data);
     }
+
+    // sliders
+
+    public function sliders()
+    {
+        $xcrud = xcrud_get_instance();
+        $xcrud->table('sliders');
+        $xcrud->no_editor('url');
+        // $xcrud->unset_title();
+        $xcrud->change_type('image', 'image', false, array(
+        'width' => 1920,
+        'path' => '..\..\uploads\slider',
+        'thumbs' => array(array(
+        'height' => 55,
+        'width' => 120,
+        'marker' => '_th'))));
+        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
+        $data['title'] = 'Sliders';
+        $data['head'] = 'Sliders';
+        $data['content'] = $xcrud->render();
+        $data['main_content'] = 'Admin/xcrud';
+        $data['crumbdata'] = array('Settings','sliders');
+        $data['crumb'] = 'Admin/crumb';
+        $this->load->view('Admin/template', $data);
+    }
+
+
+       public function service()
+    {
+        $xcrud = xcrud_get_instance();
+        $xcrud->table('service');
+        $xcrud->no_editor('url');
+        // $xcrud->unset_title();
+        $xcrud->change_type('image', 'image', false, array(
+        'width' => 450,
+        'path' => '..\..\uploads\service',
+        'thumbs' => array(array(
+        'height' => 55,
+        'width' => 120,
+        'marker' => '_th'))));
+        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
+        $data['title'] = 'Service';
+        $data['head'] = 'Service';
+        $data['content'] = $xcrud->render();
+        $data['main_content'] = 'Admin/xcrud';
+        $data['crumbdata'] = array('Settings','service');
+        $data['crumb'] = 'Admin/crumb';
+        $this->load->view('Admin/template', $data);
+    }
+
+           public function team()
+    {
+        $xcrud = xcrud_get_instance();
+        $xcrud->table('team');
+        $xcrud->no_editor('url');
+        // $xcrud->unset_title();
+        $xcrud->change_type('image', 'image', false, array(
+        'width' => 450,
+        'path' => '..\..\uploads\team', 
+        'thumbs' => array(array(
+        'height' => 55,
+        'width' => 120,
+        'marker' => '_th'))));
+        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
+        $data['title'] = 'Team';
+        $data['head'] = 'Team';
+        $data['content'] = $xcrud->render();
+        $data['main_content'] = 'Admin/xcrud';
+        $data['crumbdata'] = array('Settings','team');
+        $data['crumb'] = 'Admin/crumb';
+        $this->load->view('Admin/template', $data);
+    }
+
+       public function events()
+    {
+        $xcrud = xcrud_get_instance();
+        $xcrud->table('events');
+        // $xcrud->unset_title();
+        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
+        $data['title'] = 'Events';
+        $data['head'] = 'Events';
+        $data['content'] = $xcrud->render();
+        $data['main_content'] = 'Admin/xcrud';
+        $data['crumbdata'] = array('Settings','events');
+        $data['crumb'] = 'Admin/crumb';
+        $this->load->view('Admin/template', $data);
+    }
+
+
 
 }
