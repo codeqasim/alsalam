@@ -47,24 +47,26 @@
                         <!--KODE TOP2 INFO START-->
                         <div class="kode_top2_info">
                             <ul>
+                                <?php foreach ($get_settings as $row){?>
                                 <li>
                                     <span><i class="fa fa-envelope"></i>Email Address</span>
-                                    <a href="#">info@alsalampk.com</a>
+                                    <a href="#"><?php echo $row->email; ?></a>
                                 </li>
                                 <li>
                                     <span><i class="fa icon-technology"></i>Contact No</span>
-                                    <a href="#">+92 - 331 - 1 442244</a>
+                                    <a href="#"><?php echo $row->contact_no; ?></a>
                                 </li>
                                 <li>
                                     <span><i class="fa fa-calendar"></i>Opening Timings</span>
-                                    <a href="#">Mon - Sat  11:00 A.M - 09:00 P.M</a>
+                                    <a href="#"><?php echo $row->opening_time; ?></a>
                                 </li>
+                            <?php } ?>
                             </ul>
                         </div>
                         <!--KODE TOP2 INFO END-->
                         <!--KODE TOP2 ICON START-->
-                        <div class="kode_top2_icon">
-                            <ul>
+                        <!-- <div class="kode_top2_icon"> -->
+                          <!--   <ul>
                                 <li><a href="#"><i class="fa icon-commerce"></i><span>2</span></a></li>
                                 <li>
                                     <div class="kode_search_overlay">
@@ -72,18 +74,18 @@
                                             <button type="button" id="trigger-overlay"><i aria-hidden="true" class="fa fa-search"></i></button>
                                         </div>
                                         <div id="overlay" class="overlay overlay-contentscale">
-                                            <button class="overlay-close" type="button">Close</button>
+                                            <button class="overlay-close" type="button">Close</button> -->
                                             <!--Search Bar Inner Start-->
-                                            <div class="cp-search-inner">
+                                      <!--       <div class="cp-search-inner">
                                                 <form class="kode-search kode_search-form" method="get" id="searchform">
                                                     <input type="text" name="s" id="s" autocomplete="off" data-default="" />
                                                     <button class="submit" type="submit"><i class="fa fa-search"></i></button>
                                                 </form>
-                                            </div>
+                                            </div> -->
                                             <!--Search Bar Inner End-->
-                                        </div>
-                                    </div>
-                                </li>
+                                        <!-- </div> -->
+                                    <!-- </div> -->
+                          <!--       </li>
                                 <li>
                                     <div class="dropdown">
                                         <div id="dLabel" data-toggle="dropdown">
@@ -97,7 +99,7 @@
                                         </ul>
                                     </div>
                                 </li>
-                            </ul>
+                            </ul> -->
                             <div class="donate_btn">
                                 <!-- Button trigger modal -->
                                 <div class="medium_btn theme_color_bg btn_hover2" data-toggle="modal" data-target="#myModal">
@@ -232,17 +234,26 @@
             <!--KODE TOP LOGO WRAP START-->
             <div class="kode_top_logo_wrap them_overlay">
                 <!--CONTAINER START-->
-                <div class="container">
+                 <div class="container">
                     <div class="top_logo" style="max-width: 270px;">
                         <h1><a href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>uploads/settings/logo.png" alt="kodeforest"></a></h1>
                     </div>
                     <div class="top_time_circle">
+
                         <ul>
-                            <li><a href="#">Fajr</a><span>5:30</span></li>
-                            <li><a href="#">Dhur</a><span>1:30</span></li>
-                            <li><a href="#">Asar</a><span>5:00</span></li>
-                            <li><a href="#">Magrib</a><span>6:30</span></li>
-                            <li><a href="#">iSHA</a><span>8:00</span></li>
+                            
+                            <?php foreach ($salat as $row){?>
+                            <li><a href="#">Fajr</a><span><?php $date = $row->data->timings->Fajr;
+                            echo date('h:i', strtotime($date));  ?></span></li>
+                            <li><a href="#">Dhur</a><span><?php $date =$row->data->timings->Dhuhr;
+                            echo date('h:i', strtotime($date));  ?></span></li>
+                            <li><a href="#">Asar</a><span><?php $date = $row->data->timings->Asr;
+                            echo date('h:i', strtotime($date)); ?></span></li>
+                            <li><a href="#">Magrib</a><span><?php $date = $row->data->timings->Maghrib;
+                            echo date('h:i', strtotime($date));  ?></span></li>
+                            <li><a href="#">iSHA</a><span><?php $date =$row->data->timings->Isha;
+                            echo date('h:i', strtotime($date));  ?></span></li>
+                        <?php } ?>
                         </ul>
                     </div>
                 </div>

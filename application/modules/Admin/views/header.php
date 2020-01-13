@@ -11,6 +11,8 @@
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -3514,6 +3516,7 @@
         }(jQuery);
     </script>
 
+
     <!-- select2 -->
     <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
@@ -3665,8 +3668,14 @@
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings">Settings</a></li>
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/modules">Modules</a></li>
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/currencies">Curencies</a></li>
-                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/payment_gateways">Payment Gateways</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?> /payment_gateways">Payment Gateways</a></li>
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/social">Social Icons</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/sliders">Sliders</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/service">Service</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/team">Team</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/events">Events</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/about_us">About us</a></li>
+                                    <li class=""><a href="<?= base_url(ADMINURI); ?>settings/gallery">Gallery</a></li>
                                 </ul>
                             </li>
                             <li class="<?=add_active("accounts")?>"><a href="javascript:void(0)"><i class="icon mdi mdi-face"></i><span>Accounts</span></a>

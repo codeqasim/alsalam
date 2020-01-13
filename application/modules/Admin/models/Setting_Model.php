@@ -9,9 +9,41 @@ class Setting_Model extends CI_Model
 
     public function update_settings($data)
     {
+        // echo "<pre>";
+        // print_r($data);
+        // exit();
         $this->db->update('global_settings',$data);
     }
-    public function get_settings()
+     public function image_up($uploadData)
+    {
+        $inser_array = array('image'=>$uploadData);
+        $this->db->insert('gallery',$inser_array);
+    }
+    public function getimage()
+    {
+        $this->db->from('gallery');
+        $this->db->order_by("orders_id", "asc");
+        $query = $this->db->get(); 
+        return $query->result();
+    }
+
+     function deleteimg($id)
+    {
+    $this->db->where('id', $id);
+        $result=$this->db->delete('gallery');
+        return $result;
+    }
+     function deleteimgarray($imgidarray)
+    {
+     if(is_array($imgidarray)){
+            $this->db->where_in('id', $imgidarray);
+        }else{
+            $this->db->where('id', $imgidarray);
+        }
+        $result=$this->db->delete('gallery');
+        return $result;
+    }
+     public function get_settings()
     {
         return $this->db->get('global_settings')->result_array()[0];
     }

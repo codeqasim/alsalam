@@ -35,6 +35,24 @@
                     <input name="copyrights" value="<?=$result["copyrights"] ?>" type="text" class="form-control" placeholder="copyrights">
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Email address</label>
+                <div class="col-sm-6">
+                    <input name="email" value="<?=$result["email"] ?>" type="text" class="form-control" placeholder="Email">
+                </div>
+            </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Contact No</label>
+                <div class="col-sm-6">
+                    <input name="contact_no" value="<?=$result["contact_no"] ?>" type="text" class="form-control" placeholder="Contact No">
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-3 control-label">Opening Time</label>
+                <div class="col-sm-6">
+                    <input name="opening_time" value="<?=$result["opening_time"] ?>" type="text" class="form-control" placeholder="Opening Time">
+                </div>
+            </div>
             <hr>
             <div class="form-group">
                 <label class="col-sm-3 control-label">Business Logo<div class="clearfix"></div><span class="help-block">Only PNG file supported</span></label>

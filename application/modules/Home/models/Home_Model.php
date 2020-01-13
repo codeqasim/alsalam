@@ -3,6 +3,62 @@ class Home_Model extends CI_model
 {
 
 
+    public function get_settings()
+    {
+        return $this->db->get('global_settings')->result();
+    }
+     public function about_us()
+    {
+        return $this->db->get('about_us')->result();
+    }
+
+     public function gallery()
+    {
+        return $this->db->get('gallery')->result();
+    }
+
+     public function sliders()
+    {
+    
+        return $this->db->get('sliders')->result();
+    
+    }
+
+    public function service()
+    {
+    
+        return $this->db->get('service')->result();
+    
+    }
+
+    public function team()
+    {
+    
+        return $this->db->get('team')->result();
+    
+    }
+
+    public function events()
+    {
+    
+        return $this->db->get('events')->result();
+    
+    }
+    public function blogs()
+    {
+    
+        return $this->db->get('module_blogs')->result();
+    
+    }
+
+    public function social_icons()
+    {
+    
+        return $this->db->get('global_social_icons')->result();
+    
+    }
+
+
 		public function h_menus()
 	{
 
@@ -87,8 +143,13 @@ class Home_Model extends CI_model
     }
 
 	
-
-
+    public function subscribe_email($email){
+        $field = array(
+            'email'=>$email
+            );
+        $query = $this->db->insert('newsletter', $field);
+            return $query;
+        }
 }
     
    

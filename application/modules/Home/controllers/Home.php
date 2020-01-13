@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class Home extends MX_Controller {
 
@@ -7,14 +7,51 @@ class Home extends MX_Controller {
         parent::__construct();
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->load->model('Home_Model');
-    }
+        $this->load->model('Home_Model','Home');
+    } 
     public function index()
     {
-    $data ['header_menus'] = $this->Home_Model->h_menus();
-    $data ['footer_menus'] = $this->Home_Model->f_menus();
+    $data ['get_settings'] = $this->Home->get_settings();
+    $data ['about_us'] = $this->Home->about_us();
+    $data ['header_menus'] = $this->Home->h_menus();
+    $data ['footer_menus'] = $this->Home->f_menus();
+    $data ['sliders'] = $this->Home->sliders();
+    $data ['service'] = $this->Home->service();
+    $data ['team'] = $this->Home->team(); 
+    // $data ['gallery'] = $this->Home->gallery();
+    // print_r(array_chunk($input_array,2));
+    // $one = array_chunk($this->Home->gallery(),2);
+    // $two = array_chunk($one,1);
+
+    $data ['events'] = $this->Home->events();
+    $data ['blogs'] = $this->Home->blogs();
+    $data ['social_icons'] = $this->Home->social_icons();
+    // salat api code start
+    if ($this->session->userdata('session_id')) {
+    $session_id = $this->session->userdata('session_id');
+    $array = array($session_id);
+    $data ['salat'] = $array;
+     }else{
+    $ch = curl_init();
+    $time=time();
+    $getloc = json_decode(file_get_contents("http://ipinfo.io/"));
+    $latANDlong = explode(",", $getloc->loc);
+    $latitude =$latANDlong[0]; 
+    $longitude =$latANDlong[1];
+    curl_setopt($ch, CURLOPT_URL,"http://api.aladhan.com/v1/timings/$time?latitude=".$latitude."&longitude=".$longitude."&method=1");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result= curl_exec($ch);
+    curl_close($ch);
+    $result = json_decode($result);
+    $this->session->set_userdata('session_id',$result);
+    $session_id = $this->session->userdata('session_id');
+    $array = array($session_id);
+    $data ['salat'] = $array;
+     }
+    // salat api code end
     $this->theme->view('index',$data);
     }
+
 
     public function contact()
     {
@@ -119,13 +156,19 @@ class Home extends MX_Controller {
     }
     public function cms()
     {
-        $data["cms"] = $this->HomeModel->getCmsbySlug($this->uri->segment(2));
+        $data["cms"] = $this->Home->getCmsbySlug($this->uri->segment(2));
         dd($data["cms"] );
     }
-    public function subscribe()
-    {
-        $response = $this->HomeModel->subscribe_email($this->input->post("email"));
-        echo  $response;
+
+        public function subscribe(){
+        $email   = $this->input->post('email',TRUE);
+        $result = $this->Home->subscribe_email($email);
+        $msg['success'] = false;
+        $msg['type'] = 'subscribe';
+        if($result){
+            $msg['success'] = true;
+        }
+        echo json_encode($msg);
     }
 
 }

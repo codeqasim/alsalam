@@ -14,9 +14,10 @@ class Settings extends MX_Controller
         }
         $this->load->model('Modules_Model', 'mm');
         $this->load->model('Auth_Model', 'am');
+        $this->load->Model('Setting_Model', 'SM');
         $data = getAllObjects();
         $this->load->vars($data);
-    }
+    } 
 
     public function index()
     {
@@ -161,11 +162,245 @@ class Settings extends MX_Controller
         $data['title'] = 'Social Icons';
         $data['head'] = 'Social Icons';
         $data['content'] = $xcrud->render();
-        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
-        $data['main_content'] = 'Admin/xcrud';
+         $data['main_content'] = 'Admin/xcrud';
         $data['crumbdata'] = array('Settings','Social');
         $data['crumb'] = 'Admin/crumb';
         $this->load->view('Admin/template', $data);
+    }
+
+    // sliders
+
+    public function sliders()
+    {
+        $xcrud = xcrud_get_instance();
+        $xcrud->table('sliders');
+        $xcrud->no_editor('url');
+        // $xcrud->unset_title();
+        $xcrud->change_type('image', 'image', false, array(
+        'width' => 1920,
+        'path' => '..\..\uploads\slider',
+        'thumbs' => array(array(
+        'height' => 55,
+        'width' => 120,
+        'marker' => '_th'))));
+        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
+        $data['title'] = 'Sliders';
+        $data['head'] = 'Sliders';
+        $data['content'] = $xcrud->render();
+        $data['main_content'] = 'Admin/xcrud';
+        $data['crumbdata'] = array('Settings','sliders');
+        $data['crumb'] = 'Admin/crumb';
+        $this->load->view('Admin/template', $data);
+    }
+
+
+       public function service()
+    {
+        $xcrud = xcrud_get_instance();
+        $xcrud->table('service');
+        $xcrud->no_editor('url');
+        // $xcrud->unset_title();
+        $xcrud->change_type('image', 'image', false, array(
+        'width' => 450,
+        'path' => '..\..\uploads\service',
+        'thumbs' => array(array(
+        'height' => 55,
+        'width' => 120,
+        'marker' => '_th'))));
+        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
+        $data['title'] = 'Service';
+        $data['head'] = 'Service';
+        $data['content'] = $xcrud->render();
+        $data['main_content'] = 'Admin/xcrud';
+        $data['crumbdata'] = array('Settings','service');
+        $data['crumb'] = 'Admin/crumb';
+        $this->load->view('Admin/template', $data);
+    }
+
+           public function team()
+    {
+        $xcrud = xcrud_get_instance();
+        $xcrud->table('team');
+        $xcrud->no_editor('url');
+        // $xcrud->unset_title();
+        $xcrud->change_type('image', 'image', false, array(
+        'width' => 450,
+        'path' => '..\..\uploads\team', 
+        'thumbs' => array(array(
+        'height' => 55,
+        'width' => 120,
+        'marker' => '_th'))));
+        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
+        $data['title'] = 'Team';
+        $data['head'] = 'Team';
+        $data['content'] = $xcrud->render();
+        $data['main_content'] = 'Admin/xcrud';
+        $data['crumbdata'] = array('Settings','team');
+        $data['crumb'] = 'Admin/crumb';
+        $this->load->view('Admin/template', $data);
+    }
+
+       public function events()
+    {
+        $xcrud = xcrud_get_instance();
+        $xcrud->table('events');
+        // $xcrud->unset_title();
+        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
+        $data['title'] = 'Events';
+        $data['head'] = 'Events';
+        $data['content'] = $xcrud->render();
+        $data['main_content'] = 'Admin/xcrud';
+        $data['crumbdata'] = array('Settings','events');
+        $data['crumb'] = 'Admin/crumb';
+        $this->load->view('Admin/template', $data);
+    }
+       public function about_us() 
+    {
+        $xcrud = xcrud_get_instance();
+        $xcrud->table('about_us');
+        $xcrud->columns('madaris,mosques,students,imams');
+        $xcrud->change_type('image1', 'image', false, array(
+        'width' => 450,
+        'path' => '..\..\uploads\about_us',
+        'thumbs' => array(array(
+        'height' => 55,
+        'width' => 120,
+        'marker' => '_th'))));   
+        $xcrud->change_type('image2', 'image', false, array(
+        'width' => 450,
+        'path' => '..\..\uploads\about_us',
+        'thumbs' => array(array(
+        'height' => 55,
+        'width' => 120,
+        'marker' => '_th'))));
+        $xcrud->change_type('image3', 'image', false, array(
+        'width' => 450,
+        'path' => '..\..\uploads\about_us',
+        'thumbs' => array(array(
+        'height' => 55,
+        'width' => 120,
+        'marker' => '_th'))));
+        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
+        $data['title'] = 'about_us';
+        $data['head'] = 'about_us';
+        $data['content'] = $xcrud->render();
+        $data['main_content'] = 'Admin/xcrud';
+        $data['crumbdata'] = array('Settings','about_us');
+        $data['crumb'] = 'Admin/crumb';
+        $this->load->view('Admin/template', $data);
+    }
+
+       public function gallery()
+    {
+
+        $this->load->view('Admin/header');
+        $data['files'] = $this->SM->getimage();
+        // Pass the files data to view
+        $this->load->view('Admin/gallery', $data);
+        $this->load->view('Admin/footer');
+    }
+
+    public function do_upload_img()
+    {
+if(!empty($_FILES['file']['name'])){
+
+     // Set preference
+     $config['upload_path'] = 'uploads/gallery'; 
+     $config['allowed_types'] = 'jpg|jpeg|png|gif';
+     $config['max_size'] = '1024'; // max_size in kb
+     $config['file_name'] = $_FILES['file']['name'];
+
+     //Load upload library
+     $this->load->library('upload',$config); 
+
+     // File upload
+     if($this->upload->do_upload('file')){
+       // Get data about the file
+    $uploadData = $this->upload->data('file_name');
+    $this->SM->image_up($uploadData);
+     }
+    }
+
+     // Get files data from the database
+        $data['files'] = $this->SM->getimage();
+        // Pass the files data to view
+        $this->load->view('Admin/gallery', $data);
+    }
+
+        public function deleteimg(){
+        $id   = $this->input->post('imgid');
+        $result = $this->SM->deleteimg($id);
+        $msg['success'] = false;
+        if($result){
+            $msg['success'] = true;
+        }
+        echo json_encode($msg);
+        }
+
+    public function deleteimgarray()
+    {
+        $imgidarray = $this->input->post('ids');
+         $this->db->where_in('id', explode(",", $imgidarray));
+        $this->db->delete('gallery');
+        echo json_encode(['success'=>"Item Deleted successfully."]);
+    }
+    public function approve()
+    {
+        $id = $this->input->post('imgid');
+        $this->db->set('active', 0); //value that used to update column  
+        $this->db->where('id',$id);
+        $this->db->update('gallery');
+        echo json_encode(['success'=>"Item Update successfully."]);
+    }
+        public function reject()
+    {
+        $id = $this->input->post('imgid');
+        $this->db->set('active', 1); //value that used to update column  
+        $this->db->where('id',$id);
+        $this->db->update('gallery');
+        echo json_encode(['success'=>"Item Update successfully."]);
+    }
+        public function thumbapprove()
+    {
+    $id = $this->input->post('imgid');
+    $Thumbnail = $this->db->select('Thumbnail')
+    ->from('gallery')->get()->result();
+    foreach($Thumbnail as $Thumb):
+    $Thumbnail = $Thumb->Thumbnail;
+    if($Thumbnail == 1)
+    {
+        $Thumbnail = 0;
+    }
+    else
+    {
+        $Thumbnail = 0;
+    }
+    $data=array('Thumbnail'=>$Thumbnail);
+    $this->db->update('gallery',$data);
+    endforeach;
+    $row = $this->db->get_where('gallery', array('id' => $id))->row()->Thumbnail;
+    if($row == 0)
+    {
+        $row = 1;
+    } 
+    else 
+    {
+        $row = 1;
+    }
+    $data=array('Thumbnail'=>$row);
+    $this->db->where('id',$id);
+    $this->db->update('gallery',$data);
+ 
+    echo json_encode(['success'=>"Item Update successfully."]);
+    }
+        public function updateorder()
+    {
+        $imgid = $this->input->post('imgid');
+        $id = $this->input->post('ids');
+        $this->db->set('orders_id', $imgid); //value that used to update column  
+        $this->db->where('id',$id);
+        $this->db->update('gallery');
+        echo json_encode(['success'=>"Item Update successfully."]);
     }
 
 }
