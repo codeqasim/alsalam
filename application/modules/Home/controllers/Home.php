@@ -8,15 +8,22 @@ class Home extends MX_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('Home_Model','Home');
+<<<<<<< HEAD
     } 
     public function index()
     {
     $data ['get_settings'] = $this->Home->get_settings();
     $data ['about_us'] = $this->Home->about_us();
+=======
+    }
+    public function index()
+    {
+>>>>>>> 737f267dcc1b6ba94f7944cf6d70ca0ab7502f87
     $data ['header_menus'] = $this->Home->h_menus();
     $data ['footer_menus'] = $this->Home->f_menus();
     $data ['sliders'] = $this->Home->sliders();
     $data ['service'] = $this->Home->service();
+<<<<<<< HEAD
     $data ['team'] = $this->Home->team(); 
     // $data ['gallery'] = $this->Home->gallery();
     // print_r(array_chunk($input_array,2));
@@ -49,6 +56,12 @@ class Home extends MX_Controller {
     $data ['salat'] = $array;
      }
     // salat api code end
+=======
+    $data ['team'] = $this->Home->team();
+    $data ['events'] = $this->Home->events();
+    $data ['blogs'] = $this->Home->blogs();
+    $data ['social_icons'] = $this->Home->social_icons();
+>>>>>>> 737f267dcc1b6ba94f7944cf6d70ca0ab7502f87
     $this->theme->view('index',$data);
     }
 

@@ -153,5 +153,11 @@
 <script src="<?php echo $theme_url;?>assets/js/custom.js"></script>
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 737f267dcc1b6ba94f7944cf6d70ca0ab7502f87
 </body>
 </html>
