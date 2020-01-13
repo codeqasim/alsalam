@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 4.9.1
+﻿-- phpMyAdmin SQL Dump
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2019 at 04:12 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- Generation Time: Jan 13, 2020 at 12:35 PM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,37 @@ SET time_zone = "+00:00";
 --
 -- Database: `alsalam`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about_us`
+--
+
+CREATE TABLE `about_us` (
+  `id` int(11) NOT NULL,
+  `text` text NOT NULL,
+  `madaris` varchar(255) NOT NULL,
+  `mosques` varchar(255) NOT NULL,
+  `students` varchar(255) NOT NULL,
+  `imams` varchar(255) NOT NULL,
+  `image1` varchar(255) NOT NULL,
+  `text1` varchar(255) NOT NULL,
+  `url1` varchar(255) NOT NULL,
+  `image2` varchar(255) NOT NULL,
+  `text2` varchar(255) NOT NULL,
+  `url2` varchar(255) NOT NULL,
+  `image3` varchar(255) NOT NULL,
+  `text3` varchar(255) NOT NULL,
+  `url3` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `about_us`
+--
+
+INSERT INTO `about_us` (`id`, `text`, `madaris`, `mosques`, `students`, `imams`, `image1`, `text1`, `url1`, `image2`, `text2`, `url2`, `image3`, `text3`, `url3`) VALUES
+(1, '<p>here are many variations of passages of Lorem Ipsum available, but have suffered alteration in some form, by injected humour, or randomised words of Lorem Ipsum available, but the majority have suffered alteration in some form...</p><ul></ul>', '10', '25', '300', '30', '1l0q80y0su9wg8c.jpeg', 'MADRASA IN ISTANBUL', '#', '6162jl44u2skc84.jpeg', 'MADRASA IN LAHORE', '#', 'bxitzsnf674gs88.jpeg', 'MADRASA IN KARACHI', '#');
 
 -- --------------------------------------------------------
 
@@ -63,13 +94,13 @@ CREATE TABLE `accounts_roles_types` (
   `id` int(11) NOT NULL,
   `account_type_id` int(11) NOT NULL,
   `module_id` int(11) NOT NULL,
-  `module_edit` tinyint(1) NOT NULL DEFAULT 0,
-  `module_delete` tinyint(1) NOT NULL DEFAULT 0,
-  `module_add` tinyint(1) NOT NULL DEFAULT 0,
-  `module_view` tinyint(1) DEFAULT 0,
-  `is_active` tinyint(1) NOT NULL DEFAULT 0,
-  `module_view_own` tinyint(1) NOT NULL DEFAULT 0,
-  `module_view_global` tinyint(1) NOT NULL DEFAULT 0
+  `module_edit` tinyint(1) NOT NULL DEFAULT '0',
+  `module_delete` tinyint(1) NOT NULL DEFAULT '0',
+  `module_add` tinyint(1) NOT NULL DEFAULT '0',
+  `module_view` tinyint(1) DEFAULT '0',
+  `is_active` tinyint(1) NOT NULL DEFAULT '0',
+  `module_view_own` tinyint(1) NOT NULL DEFAULT '0',
+  `module_view_global` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -115,6 +146,59 @@ INSERT INTO `accounts_types` (`id`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `date` varchar(11) NOT NULL,
+  `month` varchar(255) NOT NULL,
+  `days` varchar(255) NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `name`, `date`, `month`, `days`, `start_time`, `end_time`) VALUES
+(1, 'AWARNESS OF ISLAM EVENTAT MONDAY', '23', 'APRIL', 'Sunday', '09:45:00', '09:30:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `orders_id` int(255) NOT NULL,
+  `active` tinyint(1) DEFAULT NULL,
+  `Thumbnail` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gallery`
+--
+
+INSERT INTO `gallery` (`id`, `image`, `orders_id`, `active`, `Thumbnail`) VALUES
+(1, '0380b8c6-7994-44c4-bb6f-9c00663dbea5.jpeg', 4, 1, NULL),
+(2, 'Free-Makkah-PNG-Photo3.png', 2, 1, NULL),
+(3, 'qalam3.png', 3, 1, NULL),
+(4, 'Free-Makkah-PNG-Photo4.png', 5, NULL, NULL),
+(5, '0380b8c6-7994-44c4-bb6f-9c00663dbea51.jpeg', 6, NULL, NULL),
+(6, 'qalam4.png', 7, NULL, NULL),
+(7, '0380b8c6-7994-44c4-bb6f-9c00663dbea52.jpeg', 8, NULL, NULL),
+(8, 'Free-Makkah-PNG-Photo5.png', 9, NULL, NULL),
+(9, 'qalam5.png', 10, NULL, NULL),
+(10, 'qalam6.png', 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `global_cities`
 --
 
@@ -124,8 +208,8 @@ CREATE TABLE `global_cities` (
   `state_id` mediumint(8) UNSIGNED NOT NULL,
   `country_id` mediumint(8) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '2013-12-31 19:31:01',
-  `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `flag` tinyint(1) NOT NULL DEFAULT 1
+  `updated_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `flag` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -48175,8 +48259,8 @@ CREATE TABLE `global_countries` (
   `capital` varchar(255) DEFAULT NULL,
   `currency` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `flag` tinyint(1) NOT NULL DEFAULT 1
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `flag` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -48443,10 +48527,10 @@ CREATE TABLE `global_currencies` (
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `symbol` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
   `code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `rate` float NOT NULL DEFAULT 1,
-  `decimals` tinyint(1) NOT NULL DEFAULT 2,
+  `rate` float NOT NULL DEFAULT '1',
+  `decimals` tinyint(1) NOT NULL DEFAULT '2',
   `symbol_placement` enum('before','after') CHARACTER SET latin1 NOT NULL DEFAULT 'before',
-  `primary_order` tinyint(1) NOT NULL DEFAULT 0,
+  `primary_order` tinyint(1) NOT NULL DEFAULT '0',
   `is_default` enum('Yes','No') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'No',
   `is_active` enum('Yes','No') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Yes'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -48479,8 +48563,8 @@ INSERT INTO `global_currencies` (`id`, `name`, `symbol`, `code`, `rate`, `decima
 CREATE TABLE `global_currencies_cron_update` (
   `id` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `rate` float NOT NULL DEFAULT 1,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `rate` float NOT NULL DEFAULT '1',
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -48543,15 +48627,15 @@ INSERT INTO `global_meta` (`id`, `description`, `keywords`) VALUES
 CREATE TABLE `global_payment_gateways` (
   `payment_id` varchar(50) NOT NULL,
   `payment_name` varchar(200) DEFAULT NULL,
-  `payment_username` text DEFAULT NULL,
-  `payment_apikey` text DEFAULT NULL,
-  `payment_password` text DEFAULT NULL,
-  `payment_signature` text DEFAULT NULL,
+  `payment_username` text,
+  `payment_apikey` text,
+  `payment_password` text,
+  `payment_signature` text,
   `payment_testmode` varchar(10) DEFAULT NULL,
   `payment_development_mode` varchar(10) DEFAULT NULL,
-  `payment_percentage` double DEFAULT 0,
-  `payment_status` tinyint(4) NOT NULL DEFAULT 1,
-  `payment_show` tinyint(4) NOT NULL DEFAULT 1
+  `payment_percentage` double DEFAULT '0',
+  `payment_status` tinyint(4) NOT NULL DEFAULT '1',
+  `payment_show` tinyint(4) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -48584,15 +48668,18 @@ CREATE TABLE `global_settings` (
   `theme` varchar(300) DEFAULT NULL,
   `sitename` varchar(300) DEFAULT NULL,
   `slogan` varchar(100) NOT NULL,
-  `copyrights` varchar(100) DEFAULT NULL
+  `copyrights` varchar(100) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `contact_no` varchar(255) NOT NULL,
+  `opening_time` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `global_settings`
 --
 
-INSERT INTO `global_settings` (`id`, `logo`, `favicon`, `maincolor`, `theme`, `sitename`, `slogan`, `copyrights`) VALUES
-(1, 'logo.png', 'favicon.png', '#24d03e', 'default', 'Boilers', 'Islamic Website', 'All Rights Reserved to Alsalam');
+INSERT INTO `global_settings` (`id`, `logo`, `favicon`, `maincolor`, `theme`, `sitename`, `slogan`, `copyrights`, `email`, `contact_no`, `opening_time`) VALUES
+(1, 'logo.png', 'favicon.png', '#24d03e', 'default', 'Boilers', 'Islamic Website', 'All Rights Reserved to Alsalam', 'info@alsalampk.com', '+92 - 331 - 1 442244', 'Mon - Sat 11:00 A.M - 09:00 P.M');
 
 -- --------------------------------------------------------
 
@@ -48656,9 +48743,9 @@ CREATE TABLE `module_blogs` (
 --
 
 INSERT INTO `module_blogs` (`id`, `title`, `description`, `image`, `category_id`, `created_at`, `slug`) VALUES
-(1, 'sdfsdfs', '<p>sfsfsdfsdf</p>', '38z9ehj0hmckcg8kcw.png', 1, '2019-07-24 00:00:00', 'sdfds'),
-(2, 'sdfds', '<p>sdfsdf</p>', '14mtat2uuqhw8wsc4w.png', 2, '2019-07-18 00:00:00', 'sdfsd'),
-(3, 'Article about hadeeth', '<p>Article about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeeth</p>', '390kmjw38ssgo4sgk0.png', 3, '2019-12-08 19:00:00', 'article-about-hadeeth');
+(1, 'sdfsdfs', '<p>sfsfsdfsdf</p>', 'bwcuuflsjoooso0.jpg', 1, '2019-07-24 00:00:00', '#'),
+(2, 'sdfds', '<p>sdfsdf</p>', 'ay6e76lgtfs4k4w.jpg', 2, '2019-07-18 00:00:00', '#'),
+(3, 'Article about hadeeth', '<p>Article about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeethArticle about hadeeth</p>', '68knqu4ge64goog.jpg', 3, '2019-12-08 19:00:00', '#');
 
 -- --------------------------------------------------------
 
@@ -48706,7 +48793,6 @@ INSERT INTO `module_cms` (`id`, `title`, `slug`, `description`, `heading_id`, `i
 (2, 'Contact Us', 'contact', '<p>contact content</p>', 2, 1, 0, 7),
 (3, 'Privacy Policy', 'policy', '<p>policy content</p>', 1, 1, 1, 2),
 (4, 'Terms and Conditions', 'terms', '<p>terms content</p>', 1, 1, 0, 6),
-(5, 'Cookies Law', 'cookies', '<p>cookies content</p>', 2, 1, 0, 6),
 (6, 'Terms and Conditions', 'term_condition', '<p>sdfds</p>', 1, 2, 0, 6);
 
 -- --------------------------------------------------------
@@ -48728,9 +48814,142 @@ INSERT INTO `module_cms_headings` (`id`, `name`) VALUES
 (1, 'Company'),
 (2, 'Support');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `module_cms_menus`
+--
+
+CREATE TABLE `module_cms_menus` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `slug` varchar(300) DEFAULT NULL,
+  `header` tinyint(1) NOT NULL,
+  `footer` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `ordering` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `module_cms_menus`
+--
+
+INSERT INTO `module_cms_menus` (`id`, `name`, `slug`, `header`, `footer`, `status`, `parent_id`, `ordering`) VALUES
+(1, 'Quran Audio', 'www.quranaudio.com', 1, 0, 1, 0, 2),
+(2, 'Home', 'www.home.com', 1, 0, 1, 0, 1),
+(3, 'Quran video', 'www.quranvideo.com', 1, 0, 0, 1, 4),
+(4, 'about', 'www.about.com', 1, 0, 0, 1, 3),
+(5, 'Quran video', 'www.quranvideo.com', 0, 1, 1, 16, 2),
+(16, 'Audio', '#', 0, 1, 1, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletter`
+--
+
+CREATE TABLE `newsletter` (
+  `id` int(11) NOT NULL,
+  `email` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `newsletter`
+--
+
+INSERT INTO `newsletter` (`id`, `email`) VALUES
+(1, 'FUSIONTECH03@gmail.com'),
+(2, 'test1@rsgitech.com'),
+(3, 'admin@admin.com'),
+(4, 'admin@admin.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service`
+--
+
+CREATE TABLE `service` (
+  `id` int(11) NOT NULL,
+  `title` varchar(300) NOT NULL,
+  `image` varchar(300) NOT NULL,
+  `icon` varchar(300) NOT NULL,
+  `time` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `service`
+--
+
+INSERT INTO `service` (`id`, `title`, `image`, `icon`, `time`) VALUES
+(1, 'QURAN CLASS', '2wo5x51w27eo0c4.jpg', 'fa icon-book', '09:00 A.M - 03:00 P.M'),
+(2, 'COUNSELLING', '4wsd89qmvc84css.jpg', 'fa icon-social', '04:00 A.M - 06:00 P.M'),
+(3, 'NIKAH SERVICES', 'e1mkdu9fl7kg8s4.jpg', 'fa icon-people', '03:00 A.M - 01:00 P.M'),
+(4, 'HADITH SCHOOL', '14jmszdp16sgooc.jpg', 'fa icon-islam', '07:00 A.M - 04:00 P.M'),
+(5, 'FUNERAL SERVICES', 'a9gig6l2bpk48sg.jpg', 'fa icon-monuments-1', '09:00 A.M - 01:00 P.M'),
+(6, 'OUR CACADEMIES', '85de3bj76h44gcw.jpg', 'fa icon-monuments', '08:00 A.M - 03:00 P.M');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `id` int(11) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `sub_title` varchar(300) NOT NULL,
+  `description` text NOT NULL,
+  `url` varchar(250) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sliders`
+--
+
+INSERT INTO `sliders` (`id`, `title`, `sub_title`, `description`, `url`, `image`) VALUES
+(1, 'O Mankind', 'Remeber the favor of <span>ALLAH</span> upon you', '<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words...</p>', '#', 'b867znb8zb40g48.jpg'),
+(2, 'O Mankind', 'Remeber the favor of <span>ALLAH</span> upon you', '<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words...</p>', '#', 'dy5gkg3cfg8w08w.jpg'),
+(3, 'O Mankind', 'Remeber the favor of <span>ALLAH</span> upon you', '<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words...</p>', '#', 'dke3n50yz20wgwo.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team`
+--
+
+CREATE TABLE `team` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `designation` varchar(255) NOT NULL,
+  `fb_icon` varchar(255) NOT NULL,
+  `fb_url` varchar(255) NOT NULL,
+  `tw_icon` varchar(255) NOT NULL,
+  `tw_url` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `team`
+--
+
+INSERT INTO `team` (`id`, `name`, `designation`, `fb_icon`, `fb_url`, `tw_icon`, `tw_url`, `image`) VALUES
+(1, 'Qasim husen', 'CTO', 'fa fa-facebook', '#', 'fa fa-twitter', '#', 'jpzm5uhjcc0owo.jpg'),
+(2, 'Sheikh Hassan', 'CEO', 'fa fa-facebook', '#', 'fa fa-twitter', '#', '3engb3s5img4kks.jpg'),
+(3, 'Younis MD', 'PHP Developer', 'fa fa-facebook', '#', 'fa fa-twitter', '#', '144ndqckff6s8oo.jpg'),
+(4, 'Shahid', 'PHP Developer', 'fa fa-facebook', '#', 'fa fa-twitter', '#', 'bb2fnfua6oocscc.jpg');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `about_us`
+--
+ALTER TABLE `about_us`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `accounts`
@@ -48748,6 +48967,18 @@ ALTER TABLE `accounts_roles_types`
 -- Indexes for table `accounts_types`
 --
 ALTER TABLE `accounts_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -48832,99 +49063,154 @@ ALTER TABLE `module_cms_headings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `module_cms_menus`
+--
+ALTER TABLE `module_cms_menus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `newsletter`
+--
+ALTER TABLE `newsletter`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `service`
+--
+ALTER TABLE `service`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `team`
+--
+ALTER TABLE `team`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `about_us`
+--
+ALTER TABLE `about_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `accounts_roles_types`
 --
 ALTER TABLE `accounts_roles_types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
-
 --
 -- AUTO_INCREMENT for table `accounts_types`
 --
 ALTER TABLE `accounts_types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `global_cities`
 --
 ALTER TABLE `global_cities`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47953;
-
 --
 -- AUTO_INCREMENT for table `global_countries`
 --
 ALTER TABLE `global_countries`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
-
 --
 -- AUTO_INCREMENT for table `global_currencies`
 --
 ALTER TABLE `global_currencies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
 --
 -- AUTO_INCREMENT for table `global_currencies_cron_update`
 --
 ALTER TABLE `global_currencies_cron_update`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
 --
 -- AUTO_INCREMENT for table `global_meta`
 --
 ALTER TABLE `global_meta`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `global_settings`
 --
 ALTER TABLE `global_settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `global_social_icons`
 --
 ALTER TABLE `global_social_icons`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `modules`
 --
 ALTER TABLE `modules`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `module_blogs`
 --
 ALTER TABLE `module_blogs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `module_blogs_categories`
 --
 ALTER TABLE `module_blogs_categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `module_cms`
 --
 ALTER TABLE `module_cms`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `module_cms_headings`
 --
 ALTER TABLE `module_cms_headings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
+--
+-- AUTO_INCREMENT for table `module_cms_menus`
+--
+ALTER TABLE `module_cms_menus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `newsletter`
+--
+ALTER TABLE `newsletter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `service`
+--
+ALTER TABLE `service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `team`
+--
+ALTER TABLE `team`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
