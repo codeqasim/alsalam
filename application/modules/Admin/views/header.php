@@ -3674,11 +3674,8 @@
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/service">Service</a></li>
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/team">Team</a></li>
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/events">Events</a></li>
-<<<<<<< HEAD
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/about_us">About us</a></li>
                                     <li class=""><a href="<?= base_url(ADMINURI); ?>settings/gallery">Gallery</a></li>
-=======
->>>>>>> 737f267dcc1b6ba94f7944cf6d70ca0ab7502f87
                                 </ul>
                             </li>
                             <li class="<?=add_active("accounts")?>"><a href="javascript:void(0)"><i class="icon mdi mdi-face"></i><span>Accounts</span></a>

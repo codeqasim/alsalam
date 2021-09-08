@@ -3,7 +3,6 @@ class Home_Model extends CI_model
 {
 
 
-<<<<<<< HEAD
     public function get_settings()
     {
         return $this->db->get('global_settings')->result();
@@ -19,10 +18,6 @@ class Home_Model extends CI_model
     }
 
      public function sliders()
-=======
-
-    public function sliders()
->>>>>>> 737f267dcc1b6ba94f7944cf6d70ca0ab7502f87
     {
     
         return $this->db->get('sliders')->result();

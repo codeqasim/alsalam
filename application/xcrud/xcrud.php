@@ -11,10 +11,10 @@ require (XCRUD_PATH . '/xcrud_config.php'); // configuration
 require (XCRUD_PATH . '/xcrud_db.php'); // database class
 mb_internal_encoding(Xcrud_config::$mbencoding); // sets multibyte encoding globaly
 date_default_timezone_set(@date_default_timezone_get()); // xcrud code not depends on timezone, but this can fix some warnings
-if (get_magic_quotes_runtime())
-{
-    set_magic_quotes_runtime(0);
-}
+// if (get_magic_quotes_runtime())
+// {
+//    set_magic_quotes_runtime(0);
+// }
 
 class Xcrud
 {

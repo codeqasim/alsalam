@@ -236,7 +236,6 @@ class Settings extends MX_Controller
         $data['content'] = $xcrud->render();
         $data['main_content'] = 'Admin/xcrud';
         $data['crumbdata'] = array('Settings','team');
-<<<<<<< HEAD
         $data['crumb'] = 'Admin/crumb';
         $this->load->view('Admin/template', $data);
     }
@@ -252,8 +251,6 @@ class Settings extends MX_Controller
         $data['content'] = $xcrud->render();
         $data['main_content'] = 'Admin/xcrud';
         $data['crumbdata'] = array('Settings','events');
-=======
->>>>>>> 737f267dcc1b6ba94f7944cf6d70ca0ab7502f87
         $data['crumb'] = 'Admin/crumb';
         $this->load->view('Admin/template', $data);
     }
@@ -405,22 +402,5 @@ if(!empty($_FILES['file']['name'])){
         $this->db->update('gallery');
         echo json_encode(['success'=>"Item Update successfully."]);
     }
-
-       public function events()
-    {
-        $xcrud = xcrud_get_instance();
-        $xcrud->table('events');
-        // $xcrud->unset_title();
-        $data['base_url'] = base_url(ADMINURI.'settings/delete_all_icons');
-        $data['title'] = 'Events';
-        $data['head'] = 'Events';
-        $data['content'] = $xcrud->render();
-        $data['main_content'] = 'Admin/xcrud';
-        $data['crumbdata'] = array('Settings','events');
-        $data['crumb'] = 'Admin/crumb';
-        $this->load->view('Admin/template', $data);
-    }
-
-
 
 }
